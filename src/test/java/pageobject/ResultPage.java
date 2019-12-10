@@ -3,6 +3,7 @@ package pageobject;
 import aquality.selenium.elements.ElementFactory;
 import aquality.selenium.elements.ElementType;
 import aquality.selenium.elements.interfaces.ILabel;
+import aquality.selenium.elements.interfaces.ITextBox;
 import org.openqa.selenium.By;
 import util.Decoder;
 import java.util.List;
@@ -13,7 +14,7 @@ public class ResultPage {
     public boolean isThisQuery(String query) {
         int counter = 0;
         for (ILabel label : labels) {
-            if (Decoder.getDecode(label.getAttribute("href")).replaceAll(".+query=", "").equals(query)) {
+            if (label.getText().contains(query)) {
                 counter++;
             }
         }
