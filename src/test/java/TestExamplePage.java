@@ -12,7 +12,7 @@ public class TestExamplePage {
 
     @Test
     public void testCookies() {
-        PropertyConfigurator.configure("log4j.properties");
+        PropertyConfigurator.configure("src/test/resources/log4j.properties");
         BrowserManager.getBrowser().maximize();
         BrowserManager.getBrowser().goTo("http://example.com/");
         MainPage mainPage = new MainPage();
