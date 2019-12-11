@@ -31,7 +31,7 @@ public class TestExample {
         Assert.assertEquals(browser.getDriver().manage().getCookieNamed("example_key_3").getValue(), "example_value_300", "Cookie not changed");
         browser.getDriver().manage().deleteAllCookies();
         Assert.assertEquals(browser.getDriver().manage().getCookies().size(), 0, "Cookies is here");
-
+        browser.quit();
     }
 
     public static boolean checkAllCookies(Set<Cookie> cookies) {
