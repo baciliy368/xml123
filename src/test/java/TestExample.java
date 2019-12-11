@@ -1,37 +1,35 @@
-import aquality.selenium.browser.Browser;
 import aquality.selenium.browser.BrowserManager;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-import org.testng.reporters.jq.Main;
 import pageobject.MainPage;
-
 import java.util.Set;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
+import static org.testng.Assert.assertTrue;
 
 public class TestExample {
 
     @Test
     public void test() {
-        Browser browser = BrowserManager.getBrowser();
-        browser.maximize();
-        browser.goTo("http://example.com/");
+        BrowserManager.getBrowser().maximize();
+        BrowserManager.getBrowser().goTo("http://example.com/");
         MainPage mainPage = new MainPage();
-        Assert.assertTrue(mainPage.isThisPage());
-        browser.getDriver().manage().addCookie(new Cookie("example_key_1", "example_value_1"));
-        browser.getDriver().manage().addCookie(new Cookie("example_key_2", "example_value_2"));
-        browser.getDriver().manage().addCookie(new Cookie("example_key_3", "example_value_3"));
-        System.out.println(browser.getDriver().manage().getCookies().size());
-        Assert.assertTrue(checkAllCookies(browser.getDriver().manage().getCookies()));
-        browser.getDriver().manage().deleteCookieNamed("example_key_1");
-        Assert.assertNull(browser.getDriver().manage().getCookieNamed("example_key_1"), "cookie not deleted");
-        browser.getDriver().manage().deleteCookieNamed("example_key_3");
-        browser.getDriver().manage().addCookie(new Cookie("example_key_3", "example_value_300"));
-        Assert.assertEquals(browser.getDriver().manage().getCookieNamed("example_key_3").getValue(), "example_value_300", "Cookie not changed");
-        browser.getDriver().manage().deleteAllCookies();
-        Assert.assertEquals(browser.getDriver().manage().getCookies().size(), 0, "Cookies is here");
-        browser.quit();
+        assertTrue(mainPage.isThisPage());
+        BrowserManager.getBrowser().getDriver().manage().addCookie(new Cookie("example_key_1", "example_value_1"));
+        BrowserManager.getBrowser().getDriver().manage().addCookie(new Cookie("example_key_2", "example_value_2"));
+        BrowserManager.getBrowser().getDriver().manage().addCookie(new Cookie("example_key_3", "example_value_3"));
+        System.out.println(BrowserManager.getBrowser().getDriver().manage().getCookies().size());
+        assertTrue(checkAllCookies(BrowserManager.getBrowser().getDriver().manage().getCookies()));
+        BrowserManager.getBrowser().getDriver().manage().deleteCookieNamed("example_key_1");
+        assertNull(BrowserManager.getBrowser().getDriver().manage().getCookieNamed("example_key_1"), "cookie not deleted");
+        BrowserManager.getBrowser().getDriver().manage().deleteCookieNamed("example_key_3");
+        BrowserManager.getBrowser().getDriver().manage().addCookie(new Cookie("example_key_3", "example_value_300"));
+        assertEquals(BrowserManager.getBrowser().getDriver().manage()
+                        .getCookieNamed("example_key_3").getValue(), "example_value_300", "Cookie not changed");
+        BrowserManager.getBrowser().getDriver().manage().deleteAllCookies();
+        assertEquals(BrowserManager.getBrowser().getDriver().manage().getCookies().size(), 0, "Cookies is here");
+
     }
 
     public static boolean checkAllCookies(Set<Cookie> cookies) {
@@ -43,6 +41,11 @@ public class TestExample {
             }
         }
         return true;
+    }
+
+    @AfterTest
+    public void afterTest() {
+        BrowserManager.getBrowser().quit();
     }
 
 }
