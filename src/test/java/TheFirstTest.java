@@ -11,7 +11,6 @@ public class TheFirstTest {
     @Test
     public void test() {
         String query = "специалист по тестированию";
-
         BrowserManager.getBrowser().maximize();
         BrowserManager.getBrowser().goTo("http://tut.by");
         MainPage mainPage = new MainPage();
