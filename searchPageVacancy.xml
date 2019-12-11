@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="searchPageVacancy">
+    <test name="testOfSearchVacancy" >
+        <classes>
+            <class name="TestVacancy" />
+        </classes>
+    </test>
+</suite>
+

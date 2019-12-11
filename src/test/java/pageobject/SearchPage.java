@@ -6,14 +6,17 @@ import aquality.selenium.elements.interfaces.ITextBox;
 import org.openqa.selenium.By;
 
 public class SearchPage {
-    private ITextBox searchBox = new ElementFactory().getTextBox(By.xpath("//input[@data-qa='search-input']"), "searchTextBox");
-    private IButton searchButton = new ElementFactory().getButton(By.xpath("//button[@data-qa='search-button']"), "searchButton");
+    private ITextBox tbxSearch = new ElementFactory().getTextBox(By.xpath("//input[@data-qa='search-input']"), "search");
+    private IButton btnSubmit = new ElementFactory().getButton(By.xpath("//button[@data-qa='search-button']"), "submit");
 
     public void typeStringInSearchBox(String text) {
-        searchBox.type(text);
+        tbxSearch.type(text);
     }
-
+    public void searchFor(String text) {
+        typeStringInSearchBox(text);
+        clickSearchBox();
+    }
     public void clickSearchBox() {
-        searchButton.click();
+        btnSubmit.click();
     }
 }

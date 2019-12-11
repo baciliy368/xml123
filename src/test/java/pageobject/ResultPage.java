@@ -8,15 +8,15 @@ import org.openqa.selenium.By;
 import java.util.List;
 
 public class ResultPage {
-    List<ILabel> labels = new ElementFactory().findElements(By.xpath("//a[@data-position]"), ElementType.LABEL);
+    List<ILabel> lblResults = new ElementFactory().findElements(By.xpath("//a[@data-position]"), ElementType.LABEL);
 
-    public boolean isThisQuery(String query) {
-        int counter = 0;
-        for (ILabel label : labels) {
-            if (label.getText().contains(query)) {
-                counter++;
+    public boolean checkIsVacancyCorrect(String query) {
+        boolean result = true;
+        for (ILabel lblResult : lblResults) {
+            if (!lblResult.getText().contains(query)) {
+                result=false;
             }
         }
-        return labels.size() == counter;
+        return result;
     }
 }
