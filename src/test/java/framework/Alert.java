@@ -21,9 +21,13 @@ public class Alert {
         BrowserManager.getBrowser().handleAlert(AlertActions.ACCEPT);
     }
 
+    public static void writeTextToFieldOfAlert(String text) {
+        getDriver().switchTo().alert().sendKeys(text);
+    }
+
     public  static void sendTextToAlert(String text) {
         Logger.getInstance().info("send text to the alert");
-        getDriver().switchTo().alert().sendKeys(text);
+        writeTextToFieldOfAlert(text);
         acceptAlert();
     }
 }
