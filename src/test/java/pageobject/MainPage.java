@@ -1,13 +1,11 @@
 package pageobject;
 
-import aquality.selenium.elements.ElementFactory;
-import aquality.selenium.elements.interfaces.ILabel;
+import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
-public class MainPage {
-    private ILabel lblExample = new ElementFactory().getLabel(By.xpath("//h1"), "Example Label");
+public class MainPage extends Form {
 
-    public boolean isThisExampleMainPage() {
-        return lblExample.getText().equals("Example Domain");
+    public MainPage() {
+        super(By.xpath("//h1[text()='Example Domain']"), "Example Domain");
     }
 }
