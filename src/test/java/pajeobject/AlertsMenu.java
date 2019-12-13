@@ -2,22 +2,21 @@ package pajeobject;
 
 import aquality.selenium.elements.ElementFactory;
 import aquality.selenium.elements.interfaces.IButton;
+import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
-public class AlertsMenu {
-    private IButton btnJsAlert = new ElementFactory().getButton(By.xpath("//button[@onclick='jsAlert()']"), "jsAlert");
-    private IButton btnJsConfirm = new ElementFactory().getButton(By.xpath("//button[@onclick='jsConfirm()']"), "JSConfirm");
-    private IButton btnJsPrompt = new ElementFactory().getButton(By.xpath("//button[@onclick='jsPrompt()']"), "JSPrompt");
+public class AlertsMenu extends Form {
+    private String baseJsLocator = "//button[@onclick='%s']";
 
-    public void clickJsAlert() {
-        btnJsAlert.click();
+    protected AlertsMenu() {
+        super(By.xpath("//ul[@style='list-style-type: none;']"), "menu");
     }
 
-    public void clickJsConfirm() {
-        btnJsConfirm.click();
+    public void clickJs(String onClick) {
+        getBtnJsByOnClick(onClick).click();
     }
 
-    public void clickJsPrompt() {
-        btnJsPrompt.click();
+    private IButton getBtnJsByOnClick(String onClick) {
+        return new ElementFactory().getButton(By.xpath(String.format(baseJsLocator, onClick)), onClick);
     }
 }

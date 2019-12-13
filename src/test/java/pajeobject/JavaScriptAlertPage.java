@@ -18,6 +18,6 @@ public class JavaScriptAlertPage extends Form {
     }
 
     public JavaScriptAlertPage() {
-        super(By.xpath("//ul[@style='list-style-type: none;']"), "JavaScript Alerts");
+        super(By.id("result"), "JavaScript Alerts");
     }
 }
