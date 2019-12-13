@@ -16,12 +16,13 @@ public class ResultPage extends Form {
         super(By.xpath("//a[@data-position]"), "resultOfQuery");
     }
 
+
     public boolean checkIsVacancyCorrect(String query) {
         boolean result = true;
         Logger.getInstance().info("check correct value of results");
         for (ILabel lblResult : lblResults) {
             if (!lblResult.getText().contains(query)) {
-                result=false;
+                result = false;
             }
         }
         return result;

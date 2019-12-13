@@ -2,7 +2,7 @@
 <suite name="searchPageVacancy">
     <test name="testOfSearchVacancy" >
         <classes>
-            <class name="TestVacancy" />
+            <class name="testpackage.TestVacancy" />
         </classes>
     </test>
 </suite>
