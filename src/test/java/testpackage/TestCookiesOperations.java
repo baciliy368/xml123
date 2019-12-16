@@ -24,35 +24,28 @@ public class TestCookiesOperations extends BaseTest {
         logger.info("Step 1: Open main page");
         BrowserManager.getBrowser().goTo(PropertiesReader.getValue("START_EXAMPLE_PAGE"));
         MainPage mainPage = new MainPage();
-        logger.info("check is mainPage displayed");
-        assertTrue(mainPage.isFormDisplayed());
+        assertTrue(mainPage.isFormDisplayed(), "main page is not displayed");
 
-        logger.info("Step: 2 create softAssert");
+        logger.info("Step: 2");
         BrowserCookieManager.addCookies(arrCookiesExample);
         SoftAssert softAssert = new SoftAssert();
         Set<Cookie> allCookiesFromBrowser = BrowserCookieManager.getAllCookies();
         for (Cookie cookie : arrCookiesExample) {
-            Logger.getInstance().info(String.format("check browser cookie %s", cookie.getName()));
             softAssert.assertTrue(allCookiesFromBrowser.contains(cookie));
         }
         softAssert.assertAll("Cookies is not added");
 
         logger.info("Step: 3");
         BrowserCookieManager.deleteCookie(exampleCookie1);
-        logger.info("check: Is cookie deleted");
         assertNull(BrowserCookieManager.getCookieByName(exampleCookie1.getName()), "cookie is not deleted");
 
         logger.info("Step: 4");
         BrowserCookieManager.deleteCookie(exampleCookie3);
         BrowserCookieManager.addCookie(exampleCookie3.getName(), "example_value_300");
-        logger.info("check: Is cookie changed");
         assertEquals(BrowserCookieManager.getCookieByName("example_key_3").getValue(), "example_value_300", "Cookie not changed");
 
         logger.info("Step: 5");
         BrowserCookieManager.deleteAllCookies();
-        logger.info("check: Is cookies deleted");
         assertEquals(BrowserCookieManager.getAllCookies().size(), 0, "Cookies is not deleted");
     }
-
-
 }
