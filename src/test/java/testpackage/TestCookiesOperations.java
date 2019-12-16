@@ -21,9 +21,8 @@ public class TestCookiesOperations extends BaseTest {
 
     @Test
     public void testCookies() {
-        logger.info("Step 1:");
+        logger.info("Step 1: Open main page");
         BrowserManager.getBrowser().goTo(PropertiesReader.getValue("START_EXAMPLE_PAGE"));
-        logger.info("create mainPage");
         MainPage mainPage = new MainPage();
         logger.info("check is mainPage displayed");
         assertTrue(mainPage.isFormDisplayed());
