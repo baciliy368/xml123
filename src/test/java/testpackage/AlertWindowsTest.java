@@ -12,7 +12,6 @@ public class AlertWindowsTest extends BaseTest {
     @Test
     public void jsAlertTest() {
         logger.info("Step 1:");
-        logger.info("Create javaScriptAlertPage");
         JavaScriptAlertPage javaScriptAlertPage = new JavaScriptAlertPage();
         javaScriptAlertPage.getAlertsMenu().clickJs("jsAlert()");
         logger.info("check text of alert");

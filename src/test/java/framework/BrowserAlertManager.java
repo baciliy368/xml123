@@ -20,14 +20,14 @@ public class BrowserAlertManager {
         BrowserManager.getBrowser().handleAlert(AlertActions.ACCEPT);
     }
 
-    private static void writeTextToFieldOfAlert(String text) {
-        logger.info(String.format("put text: %s to field of alert", text));
-        driver.switchTo().alert().sendKeys(text);
-    }
-
     public  static void sendTextToAlert(String text) {
         logger.info("send text to the alert");
         writeTextToFieldOfAlert(text);
         acceptAlert();
+    }
+
+    private static void writeTextToFieldOfAlert(String text) {
+        logger.info(String.format("put text: %s to field of alert", text));
+        driver.switchTo().alert().sendKeys(text);
     }
 }
