@@ -27,9 +27,8 @@ public class TestCookiesOperations extends BaseTest {
         logger.info("check is mainPage displayed");
         assertTrue(mainPage.isFormDisplayed());
 
-        logger.info("Step: 2");
+        logger.info("Step: 2 create softAssert");
         BrowserCookieManager.addCookies(arrCookiesExample);
-        logger.info("create softAssert");
         SoftAssert softAssert = new SoftAssert();
         Set<Cookie> allCookiesFromBrowser = BrowserCookieManager.getAllCookies();
         for (Cookie cookie : arrCookiesExample) {
