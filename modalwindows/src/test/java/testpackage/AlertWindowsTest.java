@@ -11,39 +11,33 @@ public class AlertWindowsTest extends BaseTest {
 
     @Test
     public void jsAlertTest() {
-        logger.info("Step 1:");
+        logger.info("Step 1: Click for JS Alert");
         JavaScriptAlertPage javaScriptAlertPage = new JavaScriptAlertPage();
-        javaScriptAlertPage.getAlertsMenu().clickJs("jsAlert()");
-        logger.info("check text of alert");
+        javaScriptAlertPage.clickButton("jsAlert()");
         Assert.assertEquals(BrowserAlertManager.getTextOfAlert(), "I am a JS Alert", "alert fail");
 
-        logger.info("Step 2:");
+        logger.info("Step 2: click OK in JSAlert");
         BrowserAlertManager.acceptAlert();
-        logger.info("check result of accepting of alert");
         Assert.assertEquals(javaScriptAlertPage.getTextOfResult(), "You successfuly clicked an alert",
                 "result us not correct");
 
-        logger.info("Step 3:");
-        javaScriptAlertPage.getAlertsMenu().clickJs("jsConfirm()");
-        logger.info("check text of alert");
+        logger.info("Step 3: Click for JS Confirm");
+        javaScriptAlertPage.clickButton("jsConfirm()");
         Assert.assertEquals(BrowserAlertManager.getTextOfAlert(), "I am a JS Confirm", "alertConfirm fail");
 
-        logger.info("Step 4:");
+        logger.info("Step 4: click OK in JS Confirm");
         BrowserAlertManager.acceptAlert();
-        logger.info("check text of result");
         Assert.assertEquals(javaScriptAlertPage.getTextOfResult(), "You clicked: Ok",
                 "result us not correct");
 
-        logger.info("Step 5:");
-        javaScriptAlertPage.getAlertsMenu().clickJs("jsPrompt()");
-        logger.info("check text of alert");
+        logger.info("Step 5: Click for JS Prompt");
+        javaScriptAlertPage.clickButton("jsPrompt()");
         Assert.assertEquals(BrowserAlertManager.getTextOfAlert(), "I am a JS prompt", "alertPrompt fail");
 
-        logger.info("Step 6: Generate Random String");
+        logger.info("Step 6: type random string and click OK in JS Prompt");
         String randomStingForPromptAlert = RandomStringUtils.randomAlphabetic(numberOfRandomSymbols);
         BrowserAlertManager.sendTextToAlert(randomStingForPromptAlert);
-        logger.info("check text of result");
         Assert.assertEquals(javaScriptAlertPage.getTextOfResult(), String.format("You entered: %s", randomStingForPromptAlert),
-                "result us not correct");
+                "result is not correct");
     }
 }
