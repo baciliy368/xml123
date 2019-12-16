@@ -39,8 +39,7 @@ public class AlertWindowsTest extends BaseTest {
         logger.info("check text of alert");
         Assert.assertEquals(BrowserAlertManager.getTextOfAlert(), "I am a JS prompt", "alertPrompt fail");
 
-        logger.info("Step 6:");
-        logger.info("Generate Random String");
+        logger.info("Step 6: Generate Random String");
         String randomStingForPromptAlert = RandomStringUtils.randomAlphabetic(numberOfRandomSymbols);
         BrowserAlertManager.sendTextToAlert(randomStingForPromptAlert);
         logger.info("check text of result");
