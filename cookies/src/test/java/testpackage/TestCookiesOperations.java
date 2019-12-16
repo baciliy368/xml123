@@ -45,6 +45,6 @@ public class TestCookiesOperations extends BaseTest {
 
         logger.info("Step5: delete all cookies");
         BrowserCookieManager.deleteAllCookies();
-        assertEquals(BrowserCookieManager.getAllCookies().size(), 0, "Cookies are not deleted");
+        assertEquals(0, BrowserCookieManager.getAllCookies().size(), "Cookies are not deleted");
     }
 }
