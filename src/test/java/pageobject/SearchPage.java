@@ -14,13 +14,13 @@ public class SearchPage extends Form {
         super(By.xpath("//div[@class='supernova-dashboard-header']"), "work for everyone");
     }
 
-    private void typeStringInSearchBox(String text) {
-        tbxSearch.type(text);
-    }
-
     public void searchFor(String text) {
         typeStringInSearchBox(text);
         clickSearchBox();
+    }
+
+    private void typeStringInSearchBox(String text) {
+        tbxSearch.type(text);
     }
 
     private void clickSearchBox() {

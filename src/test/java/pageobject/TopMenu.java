@@ -6,7 +6,7 @@ import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
 public class TopMenu extends Form {
-    private String baseLocator = "//ul[@class='b-topbar-i']//a[@title='%s']";
+    private final String ITEM_LOCATOR_TEMPLATE = "//ul[@class='b-topbar-i']//a[@title='%s']";
 
     protected TopMenu() {
         super(By.xpath("//ul[@class='b-topbar-i']"), "topMenu");
@@ -17,6 +17,6 @@ public class TopMenu extends Form {
     }
 
     private IButton getIButtonByTitle(String nameOfButton) {
-        return new ElementFactory().getButton(By.xpath(String.format(baseLocator, nameOfButton)), nameOfButton);
+        return new ElementFactory().getButton(By.xpath(String.format(ITEM_LOCATOR_TEMPLATE, nameOfButton)), nameOfButton);
     }
 }
