@@ -16,6 +16,7 @@ public class PropertiesReader {
         }
         Properties prop = new Properties();
         try {
+            assert input != null;
             prop.load(input);
         } catch (IOException e) {
             e.printStackTrace();
