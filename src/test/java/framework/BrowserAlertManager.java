@@ -9,7 +9,6 @@ public class BrowserAlertManager {
     private static Logger logger = Logger.getInstance();
     private static RemoteWebDriver driver = BrowserManager.getBrowser().getDriver();
 
-
     public  static String getTextOfAlert() {
         logger.info("take text of the alert");
         return driver.switchTo().alert().getText();
