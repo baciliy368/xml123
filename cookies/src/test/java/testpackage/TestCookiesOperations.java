@@ -41,7 +41,7 @@ public class TestCookiesOperations extends BaseTest {
         logger.info("Step4: edit example_key_3 cookie");
         BrowserCookieManager.deleteCookie(exampleCookie3);
         BrowserCookieManager.addCookie(exampleCookie3.getName(), "example_value_300");
-        assertEquals(BrowserCookieManager.getCookieByName("example_key_3").getValue(), "example_value_300", "Cookie is not changed");
+        assertEquals("example_value_300", BrowserCookieManager.getCookieByName("example_key_3").getValue(), "Cookie is not changed");
 
         logger.info("Step5: delete all cookies");
         BrowserCookieManager.deleteAllCookies();
