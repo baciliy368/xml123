@@ -8,6 +8,7 @@ public class UniqueTestOnProject extends BaseQuery {
 
     public UniqueTestOnProject() {
         super(getSqlScriptByNameToString(nameOfTestInPropertiesFile), header);
+        System.out.println(getSqlScriptByNameToString(nameOfTestInPropertiesFile));
     }
 }
 

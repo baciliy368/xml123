@@ -41,6 +41,7 @@ public abstract class BaseQuery {
 
     protected static String getSqlScriptByNameToString(String name)   {
         try {
+
             return new BufferedReader(new FileReader(new File(PropertiesReader
                     .getValue(name))))
                     .lines().collect(Collectors.joining());
