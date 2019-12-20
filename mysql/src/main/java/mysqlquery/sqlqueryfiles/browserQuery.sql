@@ -1,0 +1,1 @@
+SELECT COUNT(browser) FROM test WHERE browser = '%s'

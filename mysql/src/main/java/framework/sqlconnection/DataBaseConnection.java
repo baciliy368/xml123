@@ -1,5 +1,6 @@
 package framework.sqlconnection;
 
+import exceptions.NoAnswerFromSqlServer;
 import framework.utiles.JsonConfigReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,7 +28,6 @@ public class DataBaseConnection {
         } else if (instance.getConnection().isClosed()) {
             instance = new DataBaseConnection();
         }
-
         return instance;
     }
 
@@ -35,7 +35,8 @@ public class DataBaseConnection {
         try {
             return getInstance().getConnection().createStatement().executeQuery(query);
         } catch (SQLException e) {
-            return null;
+            e.printStackTrace();
+            throw new NoAnswerFromSqlServer();
         }
     }
 }
